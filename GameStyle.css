@@ -1,0 +1,494 @@
+       /*Known Issue: Option divs causes small over flow in small screens.*/
+       /* A temporary solution used in js using UIchanges.addOverflow and UIchanges.removeOverflow #gameModeSelector handler for increas and #gamePlayButton for decreas html height   */
+       /* Height Fix: we reset margins for both: #sum and #buttonsContainer and #numbersRows when height is reduced */
+       
+       html {
+           /*Due to applying gradient background this may be necessary*/
+           margin: 0;
+           /*margin:0; could be ignored*/
+           height: 100vh;
+           /*prevents Game mode div from overflowing*/
+       }
+       
+       body {
+           /* background-color:  */
+           background: linear-gradient(to top, rgb(99, 26, 32), rgb(233, 24, 69));
+           /*Due to applying gradient background*/
+           margin: 0;
+           /*margin:0; coul be ignored*/
+           height: 100%;
+       }
+       
+       .h1,
+       h1 {
+           display: inline-block;
+           color: white;
+           /*font-size: 4vw;*/
+           /*font-size: 3.5rem*/
+       }
+       /*meda queries for a responsive font-size*/
+       
+       @media only screen and (max-width: 600px) {
+           .h1,
+           h1 {
+               font-size: 46px !important;
+           }
+       }
+       /* Small devices (portrait tablets and large phones, 600px and up) */
+       
+       @media only screen and (min-width: 600px) {
+           .h1,
+           h1 {
+               font-size: 46px !important;
+           }
+       }
+       /* Medium devices (landscape tablets, 768px and up) */
+       
+       @media only screen and (min-width: 768px) {
+           .h1,
+           h1 {
+               font-size: 46px !important;
+           }
+       }
+       /* Large devices (laptops/desktops, 992px and up) */
+       
+       @media only screen and (min-width: 992px) {
+           .h1,
+           h1 {
+               font-size: 52px !important;
+           }
+       }
+       /* Extra large devices (large laptops and desktops, 1200px and up) */
+       
+       @media only screen and (min-width: 1200px) {
+           .h1,
+           h1 {
+               font-size: 62px !important;
+           }
+       }
+       
+       .container {
+           text-align: center;
+           height: 100%;
+           overflow: hidden;
+       }
+       
+       .row {
+           margin-left: auto;
+           margin-right: auto;
+       }
+       
+       #sum {
+           display: block;
+           margin-top: 10vh;
+       }
+       
+       #scoreText {
+           display: block;
+           margin-right: 0px;
+           margin-left: 80%;
+       }
+       
+       #buttonsContainer {
+           margin-top: 5rem;
+       }
+       
+       .progress {
+           height: 5px;
+           width: 0%;
+       }
+       
+       .progress-bar {
+           height: 5px;
+           border-radius: 0px;
+       }
+       
+       #gamesTimer {
+           background-color: darkmagenta;
+       }
+       
+       .navbar {
+           background: linear-gradient(to right, #c31432, #240b36);
+       }
+       
+       @media only screen and(orientation: landscape) {
+           .row {
+               display: none !important;
+           }
+       }
+       
+       .numbersJug {
+           /*necessary to fix numbers from being far from each other on landscape screens*/
+           width: 50vw;
+           margin-left: auto;
+           margin-right: auto;
+       }
+       
+       #yesButton {
+           font-size: 20px;
+           color: greenyellow;
+           width: 7rem;
+           margin-right: 1rem;
+           margin-left: 1rem;
+       }
+       
+       #noButton {
+           font-size: 20px;
+           color: rgb(255, 38, 0);
+           width: 7rem;
+           margin-right: 1rem;
+           margin-left: 1rem;
+       }
+       
+       #yesButton2 {
+           font-size: 20px;
+           color: greenyellow;
+           width: 6rem;
+           margin-right: 1rem;
+           margin-left: 1rem;
+       }
+       
+       #noButton2 {
+           font-size: 20px;
+           color: rgb(255, 38, 0);
+           width: 5rem;
+           margin-right: 1rem;
+           margin-left: 1rem;
+       }
+       
+       .btn-default {
+           opacity: 0.8;
+           background: white;
+           /*background: linear-gradient(to right, #C6FFDD, #FBD786, #f7797d);*/
+           border: none;
+       }
+       
+       #speakerButton {
+           width: auto;
+           margin-top: 1rem;
+           margin-left: 1rem;
+       }
+       
+       #newGameButton {
+           margin-top: 1rem;
+       }
+       
+       .fa-volume-up {
+           color: #240b36;
+           width: auto;
+           height: auto;
+           font-size: 30px;
+       }
+       
+       .fa-volume-mute {
+           color: #240b36;
+           width: auto;
+           height: auto;
+           font-size: 30px;
+       }
+       
+       .fa-gamepad {
+           color: #240b36;
+       }
+       
+       #speakerDown {
+           display: none;
+       }
+       
+       .jumbotron {
+           width: auto;
+           position: relative;
+           left: 25%;
+           top: 0%;
+           opacity: 0.8;
+           margin-right: auto;
+           margin-left: auto;
+           background: white;
+       }
+       
+       #GameOverPopUp {
+           display: none;
+           position: absolute;
+           text-align: center;
+           width: 50%;
+           left: 25%;
+           top: 30%;
+       }
+       
+       #gamePlay {
+           display: none;
+           position: absolute;
+       }
+       
+       #themes {
+           display: none;
+           /*sibling .themesJ :/ */
+       }
+       /*High Scores Frame*/
+       
+       #highScores {
+           display: none;
+           position: absolute;
+           width: 45%;
+           left: 27.5%;
+           top: 0%;
+           border-radius: 0 0 5px 5px;
+       }
+       
+       @media only screen and (max-width: 960px) and (min-width:600px) {
+           #highScores {
+               width: 50%;
+               top: 15%;
+               left: 25%;
+           }
+       }
+       
+       @media only screen and (max-width: 660px) and (min-width: 480px) {
+           #highScores {
+               width: 70%;
+               top: 0%;
+               left: 15%;
+           }
+       }
+       
+       @media only screen and (max-width: 660px) {
+           #highScores {
+               width: 100%;
+               top: 0%;
+               left: 0%;
+           }
+       }
+       
+       #aboutDeveloper {
+           text-align: center;
+           display: none;
+       }
+       
+       #aboutDevLink {
+           text-decoration: none;
+           color: cornflowerblue;
+       }
+       
+       @media only screen and (max-width: 600px) {
+           .jumbotron {
+               left: 0%;
+               top: 20%;
+           }
+       }
+       
+       @media only screen and (min-width: 960px) {
+           .jumbotron {}
+       }
+       /* Small devices (portrait tablets and large phones, 600px and up) */
+       /* Medium devices (landscape tablets, 768px and up) */
+       
+       .form-check {
+           margin-bottom: 0.8rem;
+       }
+       /*Themes Frame*/
+       
+       .themesJ {
+           /*for landscapes including 960px and not 720px, for smaller screens it will be se using @media*/
+           position: absolute;
+           width: 50%;
+           height: 90%;
+           left: 25%;
+           /*50% - hafl of div width*/
+       }
+       
+       @media only screen and (max-width: 750px) and (min-width: 650px) {
+           /*Including HD screens*/
+           .themesJ {
+               width: 60%;
+               left: 20%
+           }
+       }
+       
+       @media only screen and (max-width: 649px) and (min-width: 550px) {
+           .themesJ {
+               width: 70%;
+               left: 15%
+           }
+       }
+       
+       @media only screen and (max-width: 549px) {
+           /*NOTE: don't confuse between viewport and actual pixeles width*/
+           .themesJ {
+               width: 100%;
+               left: 0%;
+               top: 0%;
+               border-radius: 0 0 5px 5px;
+           }
+       }
+       /* Queries for Gamplay div */
+       
+       @media only screen and (min-width: 960px) {
+           /*Including HD screens*/
+           #gamePlay {
+               width: 60%;
+               left: 20%;
+           }
+       }
+       
+       @media only screen and (max-width: 959px) and (min-width: 601px) {
+           /*Including HD screens*/
+           #gamePlay {
+               width: 70%;
+               left: 15%;
+           }
+       }
+       
+       @media only screen and (max-width: 600px) {
+           /*Including HD screens*/
+           #gamePlay {
+               width: 100%;
+               left: 0%;
+               top: 0%;
+               border-radius: 0 0 5px 5px;
+           }
+       }
+       
+       #themesList {
+           height: 20%;
+       }
+       
+       .themesButton {
+           height: 50%;
+       }
+       
+       .themesText {
+           /*use rems*/
+           font-size: 1rem;
+       }
+       
+       #themesOkButton {
+           width: 20%;
+       }
+       /*About Developer Frame*/
+       
+       #aboutDeveloper {
+           position: absolute;
+           width: 30%;
+           top: 30%;
+           left: 35%;
+       }
+       
+       @media only screen and (max-width: 960px) and (min-width:600px) {
+           #aboutDeveloper {
+               width: 50%;
+               top: 30%;
+               left: 25%;
+           }
+       }
+       
+       @media only screen and (max-width: 660px) and (min-width: 480px) {
+           #aboutDeveloper {
+               width: 60%;
+               top: 30%;
+               left: 20%;
+           }
+       }
+       
+       @media only screen and (max-width: 660px) {
+           #aboutDeveloper {
+               width: 70%;
+               top: 30%;
+               left: 15%;
+           }
+       }
+       /* media Queries for GameOverPopUp */
+       
+       @media only screen and (max-width: 960px) and (min-width:600px) {
+           #GameOverPopUp {
+               width: 60%;
+               top: 30%;
+               left: 20%;
+           }
+       }
+       
+       @media only screen and (max-width: 660px) and (min-width: 480px) {
+           #GameOverPopUp {
+               width: 60%;
+               top: 30%;
+               left: 20%;
+           }
+       }
+       
+       @media only screen and (max-width: 660px) {
+           #GameOverPopUp {
+               width: 90%;
+               top: 30%;
+               left: 5%;
+           }
+       }
+       /*Overflow handling:*/
+       /* We assume that most of smartphones today are +500px heigh, so we are not responsible for any rendering issue */
+       /*Height fix using media queries: the heigh Overflow problem happens due to 2 reasons: */
+       /* 1-the phone browser reducecs document height. */
+       /* 2-navbar menus cases over flow due to increasing height */
+       /*If you want to see the effect of this, just remove these queries AND stop the 4 UIchanges functios in js:*/
+       /* addOveflow(), removeOverflow(), enableOverFlow(), disablOverflow() */
+       
+       @media only screen and (min-height:440px) and (max-height:480px) {
+           /* http://www.viewportemulator.com/devices/apple/iphone-4s/ */
+           /* fix for legacy smartphones, iphone 4s  in particular*/
+           #buttonsContainer {
+               margin-top: 1rem;
+           }
+           #sum {
+               margin-top: 2vh;
+           }
+           #numbersRow {
+               margin-top: 1rem;
+           }
+           /*width fix*/
+           #yesButton {
+               width: 5rem;
+               text-align: center;
+           }
+           #noButton {
+               width: 5rem;
+               text-align: center;
+           }
+       }
+       
+       @media only screen and (min-height:510px) and (max-height:600px) {
+           #buttonsContainer {
+               margin-top: 3rem;
+           }
+           #sum {
+               margin-top: 5vh;
+           }
+           #numbersRow {
+               margin-top: 2rem;
+           }
+       }
+       
+       @media only screen and (min-height:601px) and (max-height:700px) {
+           #buttonsContainer {
+               margin-top: 4rem;
+           }
+           #sum {
+               margin-top: 6vh;
+           }
+           #numbersRow {
+               margin-top: 2rem;
+           }
+       }
+       
+       @media only screen and (min-height:701px) {
+           #buttonsContainer {
+               /* default: mt-5 */
+               margin-top: 5rem;
+           }
+           #sum {
+               /* default: 10vh*/
+               margin-top: 10vh;
+           }
+           #numbersRow {
+               /* default:  mt-6  */
+               margin-top: 3rem;
+           }
+       }
+       /* Try to change only #sum or #nubersRow or #buttonsContainer till you find the most devent viewport*/
+       /*try to change width to get decent scene*/
