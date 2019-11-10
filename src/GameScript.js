@@ -26,10 +26,8 @@ var ansView; //Array
 var ansViewLength = 2;
 ansView = new Array();
 
-
 var gameMode = 'simpleAdd';
 var checkAns = false;
-
 
 var wrongAnswers; //Array
 var wrongAnsLength = 4;
@@ -1496,8 +1494,8 @@ $(document).ready(function() {
 
     //New Game Button
     let newGameButtonHandler = function() {
-        //Unbind for this handler function is applyed only during the game is running, In other words, if 
-        //#yesButton or #noButton clicked
+        //Unbinding this handler function is applyed only during the game is running, In other words, if 
+        // #yesButton or #noButton clicked
 
         //Your score will not be lost:
         $.scoreFunc();
@@ -1535,9 +1533,7 @@ $(document).ready(function() {
     });
 
 
-
     //Languages support:
-
     class LangaugesSupport {
         constructor() {
             this.setLanguage = function(langStrArray, items) {
@@ -1716,65 +1712,3 @@ $(document).ready(function() {
 
 
 });
-
-
-
-
-//Documnetation:
-//var GameCookies = {
-//     setGameCookies: function(cookieName, cookieValue, cookieExpiration) {
-
-//         let date = new Date();
-//         date.setTime(date.getTime() + (cookieExpiration * 24 * 60 * 60 * 1000)); //1000 ms to sec.
-//         let expires = "expires=" + date.toUTCString();
-//         document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
-//     },
-//     getGameCookies: function(cookieName) {
-
-//         let name = cookieName + "=";
-//         let co = document.cookie.split(';');
-//         for (let i = 0; i < co.length; i++) {
-//             var c = co[i];
-//             while (c.charAt(0) == ' ') {
-//                 c = c.substring(1);
-//             }
-//             if (c.indexOf(name) == 0) {
-//                 console.log("Score cookies: " + c.substring(name.length, c.length));
-//                 for (let i = 0; i < scoreArrayLength; i++) {
-
-//                 }
-//                 return c.substring(name.length, c.length);
-
-//             }
-//         }
-//         return "";
-
-//     },
-//     getGameCookies: function(cookieName) {
-
-//         let name = cookieName + "=";
-//         let co = document.cookie.split(';');
-//         for (let i = 0; i < co.length; i++) {
-//             var c = co[i];
-//             while (c.charAt(0) == ' ') {
-//                 c = c.substring(1);
-//             }
-//             if (c.indexOf(name) == 0) {
-//                 console.log("Score cookies: " + c.substring(name.length, c.length));
-//                 for (let i = 0; i < scoreArrayLength; i++) {
-
-//                 }
-//                 return c.substring(name.length, c.length);
-
-//             }
-//         }
-//         return "";
-
-//     }
-
-// }
-
-
-//  //here score is set using cookies inside $.gameOver();
-//  GameCookies.setGameCookies("score", score + "", 365); //key , value , ex date
-//  GameCookies.getGameCookies("score"); //score: cookieInteger
