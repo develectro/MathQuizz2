@@ -5,4 +5,4 @@ A simple yet interactive Game 🎮
 Thanks to [uiGradients](https://uigradients.com/#NeonLife) for their awesome color gradients 🎨
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/) 📜
