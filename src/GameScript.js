@@ -198,28 +198,9 @@ $(document).ready(function() {
             let item = localStorage.getItem(scoreItem);
             return item;
         },
-
-        checkScoreisNaN: function() {
-            let scoreXInt = [
-                scoreInitialValue.score1Int,
-                scoreInitialValue.score2Int,
-                scoreInitialValue.score3Int,
-                scoreInitialValue.score4Int,
-                scoreInitialValue.score5Int,
-            ]
-
-            for (let item of scoreXInt) {
-                if (isNaN(item)) {
-                    console.error("error: score value is NaN");
-                    this.setScore("score1", 0);
-                    this.setScore("score2", 0);
-                    this.setScore("score3", 0);
-                    this.setScore("score4", 0);
-                    this.setScore("score5", 0);
-                } else {}
-            }
-        }
-
+        setScoreArrayNaNcase: {
+            zeroValue: 0
+        },
 
     }
     console.log("score initial value: " + parseInt(GameScoreSystem.getScore("score1"))); //works !
@@ -250,23 +231,7 @@ $(document).ready(function() {
 
     }
 
-    var setScoreArray = {
-        a: scoreArray[0] = scoreInitialValue.score1Int,
-        b: scoreArray[1] = scoreInitialValue.score2Int,
-        c: scoreArray[2] = scoreInitialValue.score3Int,
-        d: scoreArray[3] = scoreInitialValue.score4Int,
-        e: scoreArray[4] = scoreInitialValue.score5Int,
-        sort: scoreArray.sort() // scores in ascending order
-            //if you like simplification you can set: x:scoreArray[y] = parseInt(localStorage.getItem("someItem"));
-    }
-
-    // checkScoreisNaN(): //when the game is run for the first time this function is required.
-    //It's necesarry to prevent score from showing NaN values.
-    GameScoreSystem.checkScoreisNaN();
-
-
-
-
+   
     $.scoreFunc = function() {
 
         //console.log("It's not NaN ", scoreInitialValue.score1Int);
@@ -392,7 +357,8 @@ $(document).ready(function() {
         let domTexts = [
             //this piece of code is iterated in event handlers section, it needs some modifications.
             $("#firstNum"), $("#PlusSign"),
-            $("#secondNum"), $("#sum")
+            $("#secondNum"), $("#sum"),
+            $("#yesButton"), $("#noButton")
         ]
         for (let item of domTexts) {
             item.fadeTo("fast", 0.1);
@@ -405,7 +371,8 @@ $(document).ready(function() {
         let domTexts = [
             //this piece of code is iterated in event handlers section, it needs some modifications.
             $("#firstNum"), $("#PlusSign"),
-            $("#secondNum"), $("#sum")
+            $("#secondNum"), $("#sum"),
+            $("#yesButton"), $("#noButton")
         ]
         for (let item of domTexts) {
             item.fadeTo("fast", 1);
@@ -1512,16 +1479,50 @@ $(document).ready(function() {
 
     //Score Window:
     $("#ScoresSelector").click(function() {
+        
+         if (isNaN(scoreInitialValue.score1Int)) {
+             //this check must works only on the very first time page laoded OR if browser cache deleted
+             console.error("error: score value is " + scoreInitialValue.score1Int);
+             //reset score cache to be 0 instead of NaN
+             GameScoreSystem.setScore("score1", 0);
+             GameScoreSystem.setScore("score2", 0);
+             GameScoreSystem.setScore("score3", 0);
+             GameScoreSystem.setScore("score4", 0);
+             GameScoreSystem.setScore("score5", 0);
 
-        $("#highScores").fadeIn();
-        UIchanges.navBarCollapsing("#ScoresSelector");
-        UIchanges.hideInterfaceComponents();
-        $("#sc1").text(setScoreArray.sort[0]);
-        $("#sc2").text(setScoreArray.sort[1]);
-        $("#sc3").text(setScoreArray.sort[2]);
-        $("#sc4").text(setScoreArray.sort[3]);
-        $("#sc5").text(setScoreArray.sort[4]);
+             //reset scoreXInt value to be an integer of score cache, that is 0
+             scoreInitialValue.score1Int = parseInt(GameScoreSystem.getScore("score1"));
+             scoreInitialValue.score2Int = parseInt(GameScoreSystem.getScore("score2"));
+             scoreInitialValue.score3Int = parseInt(GameScoreSystem.getScore("score3"));
+             scoreInitialValue.score4Int = parseInt(GameScoreSystem.getScore("score4"));
+             scoreInitialValue.score5Int = parseInt(GameScoreSystem.getScore("score5"));
 
+             $("#sc1").text(GameScoreSystem.setScoreArrayNaNcase.zeroValue);
+             $("#sc2").text(GameScoreSystem.setScoreArrayNaNcase.zeroValue);
+             $("#sc3").text(GameScoreSystem.setScoreArrayNaNcase.zeroValue);
+             $("#sc4").text(GameScoreSystem.setScoreArrayNaNcase.zeroValue);
+             $("#sc5").text(GameScoreSystem.setScoreArrayNaNcase.zeroValue);
+
+          }else {
+             // scoreArray has been already defined at the top of the script
+             scoreArray[0] = scoreInitialValue.score1Int;
+             scoreArray[1] = scoreInitialValue.score2Int;
+             scoreArray[2] = scoreInitialValue.score3Int;
+             scoreArray[3] = scoreInitialValue.score4Int;
+             scoreArray[4] = scoreInitialValue.score5Int;
+             let sortedList = scoreArray.sort();
+             
+             $("#sc1").text(sortedList[4]);
+             $("#sc2").text(sortedList[3]);
+             $("#sc3").text(sortedList[2]);
+             $("#sc4").text(sortedList[1]);
+             $("#sc5").text(sortedList[0]);
+
+          }
+             $("#highScores").fadeIn();
+             UIchanges.navBarCollapsing("#ScoresSelector");
+             UIchanges.hideInterfaceComponents();
+        
     });
     $("#scoresButton").click(function() {
         $("#highScores").fadeOut();
