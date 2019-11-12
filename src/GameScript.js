@@ -1453,13 +1453,14 @@ $(document).ready(function() {
     //About Window:
     $("#about").click(function() {
         $("#aboutDeveloper").fadeIn("fast");
+        soundEffects.oneUpEffect();
         UIchanges.hideInterfaceComponents(); //defined in themes settings section.
         UIchanges.navBarCollapsing();
 
     });
     $("#aboutOkButton").click(function() {
         $("#aboutDeveloper").fadeOut('fast');
-        soundEffects.oneUpEffect();
+     
         UIchanges.showInterfaceComponents();
     });
 
