@@ -1264,16 +1264,17 @@ $(document).ready(function() {
                 UIchanges.showInterfaceComponents();
             },
             darkMode: function() {
-                $("body").css("background", "black");
-                $(".navbar").css("background", "linear-gradient(to right,#470b36,#240b36)");
-                $("#gamesTimer").css("background-color", "Blue");
-                $(".fa-volume-up").css("color", "Blue");
-                $(".fa-volume-mute").css("color", "Blue");
-                $(".fa-gamepad").css("color", "Blue");
-                $("#newGameButton").css("color", "Blue");
+                $("body").css("background", "#101820ff");
+                $(".navbar").css("background", "linear-gradient(to right, #243B55, #141E30)");
+                $("#gamesTimer").css("background-color", "#adefd1ff");
+                $(".fa-volume-up").css("color", "#243B55");
+                $(".fa-volume-mute").css("color", "#243B55");
+                $(".fa-gamepad").css("color", "#243B55");
+                $("#newGameButton").css("color", "#243B55");
                 for (let item of textArray) {
-                    item.css("color", "#662f90");
+                    item.css("color", "#adefd1ff");
                 }
+               
                 checkTextColorChange = true; //text color changed.
                 UIchanges.themeSelected();
                 UIchanges.showInterfaceComponents();
@@ -1308,13 +1309,6 @@ $(document).ready(function() {
             },
             milkAndStrawberry: function() {
                 $("body").css("background", "linear-gradient(to top,#fbffd7,#e8f0bf,#e8f0bf,#e8f0bf,#f1e5bc,#f5c6b9,#f7a9b6,#f38fb4)");
-                // $("body").css({
-                //     "background": "url('file:///C:/Users/INSPIRON/Desktop/JQuery/JQuery%20Math%20Game/1x/Asset%201.png')",
-                //     "background-repeat": "no-repeat",
-                //     "background-position": "center",
-                //     "background-attachment": "fixed",
-                //     "background-size": "cover"
-                // });
                 $(".navbar").css("background", "rgba(255,255,255,0.5)");
                 $(".nav-link").css("color", "white");
                 $("#gamesTimer").css("background-color", "#38ef7d");
@@ -1383,7 +1377,7 @@ $(document).ready(function() {
 
     //Dark Mode theme:
     $("#DarkMode").mouseenter(function() {
-        $(this).css({ "background": "black", "color": "blue" });
+        $(this).css({ "background":"linear-gradient(to right, #243B55, #141E30)", "color": "#adefd1ff", "color": "#adefd1ff" });
         $(this).mouseleave(function() {
             $(this).css({ "background": "none", "color": "#495057" });
         })
@@ -1465,6 +1459,7 @@ $(document).ready(function() {
     });
     $("#aboutOkButton").click(function() {
         $("#aboutDeveloper").fadeOut('fast');
+        soundEffects.oneUpEffect();
         UIchanges.showInterfaceComponents();
     });
 
